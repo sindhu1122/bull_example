@@ -1,9 +1,11 @@
 const Queue = require('bull');
 const sendMail=require('./sendMail')
 /** @description This functions maintains a queue of mail ids to which mail should be sent
-    @requires bull
+   * @requires bull
+   * @requires redis
 */
-
+const bullQueue=()=>
+{
 const sendMailQueue = new Queue('sendMail', {
   redis: {
     host: '127.0.0.1',
@@ -26,14 +28,15 @@ sendMailQueue.add({email:'kavithasrieduru@gmail.com'})
 
 /**
  * Process the jobs that are present in the queue
- * this calls the sendMail function for each object in the queue and sends the function
+ * this calls the sendMail function for each object in the queue and sends the data in the object as parameter
  */
 sendMailQueue.process(async job => {
   return await sendMail(job.data.email);
 });
 /**
- * @event completed triggers when the job is completed
+ * @event completed - triggers when job is completed
  */
 sendMailQueue.on('completed', (job, result) => {
   console.log(`Mail has been sent`);
 })
+}
