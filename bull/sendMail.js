@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 /** @description This functions sents the mail with help of nodemailer
  * @param {string} email -  Consists of a email address to which mail has to be sent
+ * @requires nodemailer
 */
 async function sendMail(email) {
     const transporter = nodemailer.createTransport({
