@@ -1,0 +1,19 @@
+{
+  "name": "bull_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bull": "^3.14.0",
+    "cluster": "^0.7.7",
+    "nodemailer": "^6.4.6",
+    "redis": "^3.0.2",
+    "redix": "^1.0.22"
+  }
+}
